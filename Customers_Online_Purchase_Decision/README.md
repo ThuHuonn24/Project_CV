@@ -8,9 +8,9 @@ Trong ngành Thương mại điện tử, việc nhận diện sớm khách hàn
 
 ---
 
-### 2. Từ điển Dữ liệu & Quy tắc Nghiệp vụ (Data Dictionary & Business Rules)
+### 2. 
 
-#### Bảng chỉ số đặc trưng (Key Feature Metrics):
+#### Bảng chỉ số đặc trưng:
 | Tên đặc trưng (Feature) | Loại dữ liệu | Ý nghĩa nghiệp vụ |
 | :--- | :--- | :--- |
 | `PageValues` | Continuous | Giá trị trung bình của các trang web mà người dùng đã truy cập trước khi hoàn tất giao dịch. |
@@ -27,7 +27,7 @@ Trong ngành Thương mại điện tử, việc nhận diện sớm khách hàn
 
 ---
 
-### 3. Quy trình Xử lý Dữ liệu End-to-End (Data Pipeline Flow)
+### 3. Quy trình xử lý dữ liệu End-to-End 
 
 [Dữ liệu thô: Kaggle] ->
 [Tiền xử lý & Mã hóa] (Clean missing values, One-Hot Encoding, StandardScaler) -> 
@@ -37,7 +37,7 @@ Trong ngành Thương mại điện tử, việc nhận diện sớm khách hàn
 
 ---
 
-### 4. Kết quả Mô hình & Đánh giá Hiệu năng (Model Performance)
+### 4. Kết quả mô hình & Đánh giá hiệu năng
 
 Mô hình **Gradient Boosting Classifier** đạt các chỉ số kinh doanh chính trên tập kiểm tra:
 
@@ -50,11 +50,11 @@ Mô hình **Gradient Boosting Classifier** đạt các chỉ số kinh doanh ch�
 
 ---
 
-### 5. Đề xuất Giải pháp 
+### 5. Đề xuất giải pháp 
 
-1. **Tối ưu hóa các Trang có PageValues Cao:** 
+1. **Tối ưu hóa các trang có PageValues Cao:** 
    * Đưa các nút kêu gọi hành động (CTA), mã giảm giá hoặc ưu đãi giới hạn thời gian (Flash Sale) vào các trang có chỉ số `PageValues` cao để thúc đẩy hành vi chốt đơn.
-2. **Chiến lược giữ chân Khách hàng (Giảm Bounce/Exit Rates):**
+2. **Chiến lược giữ chân khách hàng (Giảm Bounce/Exit Rates):**
    * Tăng tốc độ tải trang sản phẩm và gợi ý sản phẩm liên quan (Recommendation System) dựa trên thời gian khách xem `ProductRelated_Duration`.
 3. **Cải tiến kỹ thuật cho mô hình:**
    * **Vấn đề:** Dữ liệu có sự mất cân bằng lớn giữa nhóm Mua (411) và Không mua (2,055).
