@@ -29,19 +29,17 @@ Trong ngành Thương mại điện tử, việc nhận diện sớm khách hàn
 
 ### 3. Quy trình Xử lý Dữ liệu End-to-End (Data Pipeline Flow)
 
-[Dữ liệu thô: Kaggle]
+[Dữ liệu thô: Kaggle] ->
+[Tiền xử lý & Mã hóa] -> (Clean missing values, One-Hot Encoding, StandardScaler)
 │
 ▼
-[Tiền xử lý & Mã hóa] ──► (Clean missing values, One-Hot Encoding, StandardScaler)
+[Lựa chọn Đặc trưng]  -> (Áp dụng SelectKBest + Mutual Information => Lọc Top 5 biến)
 │
 ▼
-[Lựa chọn Đặc trưng]  ──► (Áp dụng SelectKBest + Mutual Information ➔ Lọc Top 5 biến)
+[Huấn luyện Mô hình]   -> (Gradient Boosting Classifier)
 │
 ▼
-[Huấn luyện Mô hình]   ──► (Gradient Boosting Classifier)
-│
-▼
-[Đánh giá & Xuất Insights] ──► (Confusion Matrix, Classification Report, Feature Importance)
+[Đánh giá & Xuất Insights] -> (Confusion Matrix, Classification Report, Feature Importance)
 
 
 ---
