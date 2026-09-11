@@ -1,55 +1,51 @@
 ## Tổng Quan Dự Án
 
-Dự án thực hiện **Phân tích & Thiết kế hệ thống (System Analysis & Design - SAD)** cho quy trình vận hành, nhập hàng, bán hàng và quản lý kho tại chi nhánh cửa hàng thời trang **ICONDENIM** (Nguyễn Trãi, Q.5, TP.HCM).
-
-**Mục tiêu bài toán:**
-- Chuyển đổi phương thức quản lý thủ công (sổ sách/file riêng lẻ) sang **Hệ thống thông tin quản lý (MIS)** tập trung.
-- Tối ưu hóa quy trình luân chuyển hàng hóa, giảm thiểu sai sót số liệu kho và công nợ.
-- Chuẩn hóa quy trình nghiệp vụ (Business Processes) làm cơ sở cho việc số hóa/phát triển phần mềm.
-
----
-
-## Các phân hệ và chức năng chính
-
-1. **Phân hệ Quản lý Nhập hàng:**
-   - Lập Đơn đặt hàng NCC và theo dõi tiến độ giao hàng.
-   - Kiểm tra chất lượng hàng nhập, lập Phiếu nhập kho, Phiếu chi và cập nhật tồn kho tự động.
-
-2. **Phân hệ Quản lý Bán hàng & Dịch vụ Khách hàng:**
-   - Tiếp nhận đơn hàng, tra cứu tồn kho thời gian thực.
-   - Xuất Hóa đơn bán hàng, phân công giao hàng và lập Phiếu thu tiền.
-
-3. **Phân hệ Quản lý Kho & Tồn kho:**
-   - Quản lý biến động kho (Nhập/Xuất/Điều chuyển/Kiểm kê định kỳ).
-   - Xử lý chênh lệch kiểm kê và cảnh báo ngưỡng tồn kho tối thiểu.
-
-4. **Phân hệ Xử lý Sự cố & Đổi trả:**
-   - Tiếp nhận phản hồi hàng lỗi/giao sai, lập Biên bản sự cố.
-   - Theo dõi tiến độ đền bù/đổi trả và lưu nhật ký đối soát.
-
-5. **Phân hệ Báo cáo & Thống kê Quản trị:**
-   - Thống kê doanh thu, chi phí, lợi nhuận theo khoảng thời gian.
-   - Báo cáo giá trị tồn kho, tốc độ luân chuyển hàng hóa hỗ trợ ra quyết định kinh doanh.
+### 1. Phân tích Tác nhân & Quyền hạn 
+Hệ thống thiết lập 3 nhóm tác nhân chính với các phạm vi nghiệp vụ tách biệt:
+* **Student (Sinh viên):** Quản lý profile cá nhân, tìm kiếm vị trí thực tập theo Ngành học/Đợt thực tập, upload CV (PDF), ứng tuyển (Apply), theo dõi trạng thái hồ sơ (FSM) và nhận lịch phỏng vấn.
+* **Company (Doanh nghiệp):** Cập nhật thông tin công ty, đăng tuyển bài viết thực tập (Internship Postings), sàng lọc hồ sơ ứng viên, chuyển trạng thái hồ sơ (Shortlist/Reject/Accept) và xếp lịch phỏng vấn (Interview Scheduling).
+* **Admin (Quản trị viên hệ thống):** Quản lý danh mục (Ngành học, Đợt thực tập), duyệt tài khoản doanh nghiệp, kiểm soát dữ liệu ứng tuyển và theo dõi Dashboard thống kê hệ thống.
 
 ---
 
-## Sản Phẩm Phân Tích Nghiệp Vụ & Thiết Kế
+### 2. Quy trình nghiệp vụ cốt lõi
 
-Hệ thống được phân tích theo **Phương pháp Phân tích Structured Analysis (SSAD)** với các sản phẩm tài liệu chi tiết:
+#### Luồng kết nối thực tập End-to-End:
+1. **Đăng tin:** Company tạo bài đăng tuyển dụng (`Internship`) liên kết với Ngành học (`Major`) và Đợt thực tập (`Internship_Period`).
+2. **Ứng tuyển:** Student chọn bài đăng, upload CV (định dạng PDF) để tạo đơn ứng tuyển (`Application`).
+3. **Sàng lọc & Duyệt:** Company xem danh sách hồ sơ, tải/xem CV và cập nhật trạng thái đơn ứng tuyển.
+4. **Phỏng vấn:** Khi đơn ứng tuyển đạt trạng thái **Shortlisted**, Company khởi tạo lịch phỏng vấn (`Interview`) gồm thời gian và địa điểm.
+5. **Hoàn tất:** Student theo dõi trạng thái và lịch phỏng vấn thời gian thực trên giao diện di động.
 
-- **Khảo sát & Thu thập Yêu cầu (Requirements Gathering):** Thực hiện phỏng vấn Quản lý cửa hàng và phát phiếu khảo sát cho nhân viên bán hàng/khách hàng.
-- **Sơ đồ Ngữ cảnh (Context Diagram - DFD Level 0):** Xác định ranh giới hệ thống và tương tác với các Tác nhân bên ngoài (Khách hàng, NCC, Ban quản lý).
-- **Sơ đồ Phân rã Chức năng (FDD):** Cấu trúc cây chi tiết 5 phân hệ chính và 19 chức năng con mức lá.
-- **Sơ đồ Dòng Dữ liệu (DFD Level 1):** Mô tả chi tiết dòng chảy dữ liệu cho cả 5 phân hệ nghiệp vụ.
-- **Ma trận Chức năng - Thực thể (CRUD Matrix):** Bảng ánh xạ 14 thực thể dữ liệu với các chức năng nhằm đảm bảo tính toàn vẹn của kiến trúc dữ liệu.
-- **Mô hình Dữ liệu (ERD & Relational Database):** Thiết kế CSDL quan hệ đạt chuẩn 3NF với các thực thể cốt lõi (`MAT_HANG`, `DON_DAT_HANG`, `HOA_DON`, `BIEN_BAN_SU_CO`,...).
-- **Wireframes / UI Prototype:** Thiết kế giao diện mẫu cho màn hình POS, quản lý nhập hàng, kiểm kho, nhật ký sự cố và báo cáo quản trị.
+#### Quản lý vòng đời đơn ứng tuyển (FSM):
+Trạng thái của `Application` được kiểm soát chặt chẽ theo luồng tuyến tính:
+`Applied` -> `Shortlisted` -> `Accepted` / `Rejected`
 
 ---
 
-## Phương Pháp & Công Cụ Sử Dụng
+### 3. Thiết kế mô hình dữ liệu quan hệ
 
-- **Kỹ năng BA:** Business Process Modeling, Requirement Engineering, Use Case Analysis, Database Normalization (1NF - 3NF).
-- **Công cụ Thiết kế & Vẽ sơ đồ:** Draw.io / Visio / Enterprise Architect.
-- **Công cụ UI/UX Wireframing:** Figma / Balsamiq.
+Hệ thống được chuẩn hóa dữ liệu với các mối quan hệ thực thể cốt lõi:
+* **User - Student Profile / Company:** Quan hệ `1 - 1` (Mỗi tài khoản gắn liền với một hồ sơ sinh viên hoặc doanh nghiệp).
+* **Company - Internship:** Quan hệ `1 - n` (Một doanh nghiệp có thể đăng nhiều tin tuyển dụng).
+* **Student Profile - Internship:** Quan hệ `n - n` thông qua bảng trung gian **Application** (Sinh viên có thể ứng tuyển nhiều tin tuyển dụng và một tin tuyển dụng nhận nhiều ứng viên).
+* **Application - Interview:** Quan hệ `1 - 1` hoặc `1 - n` (Đơn ứng tuyển đủ điều kiện mới tạo lịch phỏng vấn).
+* **Internship - Major / Internship_Period:** Quan hệ `n - 1` (Phân loại bài đăng theo chuyên ngành và kỳ thực tập).
+
+---
+
+### 4. Quy định nghiệp vụ
+
+* **BR-01 (Định dạng tệp CV):** Hệ thống chỉ chấp nhận tệp CV ở định dạng `.pdf`. Các định dạng khác sẽ bị từ chối ở cả giao diện UI và Backend Validator.
+* **BR-02 (Ràng buộc ứng tuyển):** Sinh viên không được phép tạo nhiều hơn 1 đơn ứng tuyển (`Application`) cho cùng một bài đăng tuyển dụng (`Internship`). Nút ứng tuyển sẽ chuyển trạng thái sang "Đã ứng tuyển" để ngăn chặn thao tác trùng lặp.
+* **BR-03 (Điều kiện xếp lịch phỏng vấn):** Doanh nghiệp chỉ có thể khởi tạo lịch phỏng vấn (`Interview`) đối với các đơn ứng tuyển đã được chuyển sang trạng thái **Shortlisted**.
+* **BR-04 (Bảo mật thông tin):** Doanh nghiệp chỉ được quyền truy cập và thao tác trên danh sách ứng viên nộp hồ sơ vào các bài đăng tuyển dụng thuộc sở hữu của chính doanh nghiệp đó.
+
+---
+
+### 5. Yêu cầu Phi chức năng 
+
+* **Tính khả dụng (Usability):** Giao diện thiết kế theo chuẩn ứng dụng di động, tối ưu trải nghiệm thao tác trên màn hình cảm ứng, hiển thị thông báo lỗi thân thiện với người dùng.
+* **Tính bảo mật (Security):** Mật khẩu được mã hóa an toàn, xác thực truy cập API bằng cơ chế Token (JWT/Session Authentication), phân quyền chặt chẽ theo vai trò (RBAC).
+* **Tính toàn vẹn dữ liệu (Data Integrity):** Ràng buộc khóa ngoại nghiêm ngặt giữa các bảng trong CSDL MySQL, hỗ trợ lưu trữ tệp đa phương tiện (CV/Hình ảnh) an toàn trên nền tảng Cloudinary.UX Wireframing:** Figma / Balsamiq.
 - **Định dạng Tài liệu:** Markdown / Technical Specification Documentation.
