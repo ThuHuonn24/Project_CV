@@ -45,7 +45,7 @@ Hệ thống được chuẩn hóa dữ liệu với các mối quan hệ thực
 
 ### 5. Yêu cầu Phi chức năng 
 
-* **Tính khả dụng (Usability):** Giao diện thiết kế theo chuẩn ứng dụng di động, tối ưu trải nghiệm thao tác trên màn hình cảm ứng, hiển thị thông báo lỗi thân thiện với người dùng.
-* **Tính bảo mật (Security):** Mật khẩu được mã hóa an toàn, xác thực truy cập API bằng cơ chế Token (JWT/Session Authentication), phân quyền chặt chẽ theo vai trò (RBAC).
-* **Tính toàn vẹn dữ liệu (Data Integrity):** Ràng buộc khóa ngoại nghiêm ngặt giữa các bảng trong CSDL MySQL, hỗ trợ lưu trữ tệp đa phương tiện (CV/Hình ảnh) an toàn trên nền tảng Cloudinary.UX Wireframing:** Figma / Balsamiq.
+* **Tính khả dụng:** Giao diện thiết kế theo chuẩn ứng dụng di động, tối ưu trải nghiệm thao tác trên màn hình cảm ứng, hiển thị thông báo lỗi thân thiện với người dùng.
+* **Tính bảo mật:** Mật khẩu được mã hóa an toàn, xác thực truy cập API bằng cơ chế Token (JWT/Session Authentication), phân quyền chặt chẽ theo vai trò (RBAC).
+* **Tính toàn vẹn dữ liệu:** Ràng buộc khóa ngoại nghiêm ngặt giữa các bảng trong CSDL MySQL, hỗ trợ lưu trữ tệp đa phương tiện (CV/Hình ảnh) an toàn trên nền tảng Cloudinary.UX Wireframing:** Figma / Balsamiq.
 - **Định dạng Tài liệu:** Markdown / Technical Specification Documentation.
